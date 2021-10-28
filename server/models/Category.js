@@ -1,8 +1,10 @@
 const { Schema, model } = require('mongoose');
 
 const BookSchema = new Schema({
-    category: { type: String, 
-        required: true 
+    category: { 
+        type: String, 
+        required: true ,
+        trim: true
     },
   });
   

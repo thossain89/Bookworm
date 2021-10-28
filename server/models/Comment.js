@@ -10,8 +10,11 @@ const CommentSchema = new Schema(
           type: String, 
           required: true 
     },
-      text: { type: String, 
-        required: true, minlength: 2, maxlength: 200 
+      text: { 
+        type: String, 
+        required: true, 
+        minlength: 2, 
+        maxlength: 200 
     },
     },
     { timestamps: true }
