@@ -16,7 +16,7 @@ const BooksRatingSchema = new Schema({
     },
   });
   
-  const BooksRating = mongoose.model(
+  const BooksRating = model(
     "BooksRatings",
     BooksRatingSchema,
     "booksRatings"
