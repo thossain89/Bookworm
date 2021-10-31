@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const BookSchema = new Schema(
   {
-    id: Number,
+    
     name: { 
         type: String,
         required: true 
@@ -12,8 +12,9 @@ const BookSchema = new Schema(
         required: true 
     },
     category: { 
-        type: String, 
-        required: true 
+      type: Schema.Types.ObjectId,
+      ref: 'Category',
+      required: true
     },
     description: {   
         type: String,
@@ -28,14 +29,12 @@ const BookSchema = new Schema(
       required: true,
     },
     addedBy: { 
-        type: String
-    },
-    addedByUsername: {
-         type: String 
-    },
-    addedById: { 
-        type: String 
-    },
+      
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true
+      
+    },    
     image: {
         type:String 
     },
