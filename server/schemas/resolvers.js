@@ -162,7 +162,7 @@ const resolvers = {
             return book.save();
         },
         deleteBook:async (parent, {bookId, userId}) => {
-            const book = await Book.find({bookId});
+            const book = await Book.findById({bookId});
           
             if (!book) throw new Error("Book does not exist!");
             // ToDo how do I get the addedByID?
@@ -186,7 +186,53 @@ const resolvers = {
               commentRating.save();
             }
         },
-
+        addComment:async (parent, {comment, userId}) => {
+            const { text, bookId } = comment;         
+            
+          
+            const book = await Book.findById(bookId);
+            if (!book) throw new Error("Book does not exist!");
+          
+            const newComment = new Comment({ userId, bookId, text });
+            newComment.save();
+        },
+        addMarker:async (parent,{bookId, userId}) => {
+            const book = await Book.findById(bookId);
+            if (!book) return { message: "Book does not exist!", isSaved: false };
+          
+            const _marker = await Marker.findOne({userId, bookId});
+            if (_marker)
+              return { message: "Marker already in database!", isSaved: false };
+          
+            const marker = new Marker({ userId, bookId });
+            return await marker.save();
+        },
+        removeMarker: async (parent, {bookId, userId})=> {
+            const book = await Book.findById(bookId);
+            if (!book) throw new Error("Book does not exist!");
+          
+            const marker = await Marker.findOne({userId, bookId});
+          
+            if (!marker) throw new Error("Marker is not in database!");
+          
+            return await marker.remove();
+        },
+        addCategory: async (parent, {name} ) => {
+            const user = await Category.create({ name });
+        },
+        deleteCategory: async (parent, { categoryId }, context) => {
+            if (context.user) {
+              const category = await Category.findOneAndDelete({
+                _id: categoryId                
+              });   
+              
+      
+              return category;
+            }
+            throw new AuthenticationError('You need to be logged in!');
+          },
         
     },
-}
+};
+
+module.exports = resolvers;
