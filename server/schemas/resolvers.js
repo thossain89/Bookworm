@@ -3,21 +3,135 @@ const {
     User, 
     Book, 
     Marker, 
-    BooksRating, 
+    BookRating, 
     Category, 
-    Comment, 
-    CommentRating 
+    Comment    
 } = require('../models');
 
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query:{
+        users: async () => {
+            return User.find();
+        },
+        user: async (parent, {_id, email}) => {
+                const params ={};
 
+                if (_id) {
+                    params._id = _id;
+                }
+
+                if (email) {
+                    params.email = {
+                      $regex: email,
+                    };
+                  }
+                
+                  return User.find(params)           
+        },
+        category: async () => {
+            return Category.find({});
+        },
+        comments:async () => {
+            return Comment.find({});
+        },
+        comment: async (parent, {bookId}) => {
+            return await Comment.find({bookId}).sort({ createdAt: -1 });
+        },
+        markers: async (parent, {userId})=> {
+            const markers = await Marker.find({ userId });
+
+            const bookIds = markers.map((m) => m.bookId);    
+            return await Book.getBooksByIds(bookIds);
+        }, 
+        isBookMarked: async (parent, {userId, bookId}) => {
+            const marker = await Marker.findOne({ bookId, userId });
+              
+            if (marker !== null) {
+                return true;
+            }
+                return false;
+        },
+        books : async (body) => {
+            const { options, limits } = body;
+            const { category, pages, year, sortBy, searchPhrase } = options;
+            const { page, itemsPerPage } = limits;
+            let query = [];
+          
+            if (searchPhrase) {
+              const searchText = {
+                $regex: searchPhrase,
+                $options: "i",
+              };
+              query.push({
+                $or: [
+                  { name: searchText },
+                  { author: searchText },
+                  { category: searchText },
+                  { addedBy: searchText },
+                ],
+              });
+            }
+          
+            if (category.length) query.push({ category: category });
+            if (pages.length) query.push({ pages: { $lt: pages[1], $gt: pages[0] } });
+            if (year.length) query.push({ year: { $lt: year[1], $gt: year[0] } });
+            if (!query.length) query = [{}];
+          
+            const books = await Book.find({ $and: query })
+              .sort(sortBy || { createdAt: -1 })
+              .skip(page * itemsPerPage)
+              .limit(itemsPerPage);
+            return books;
+        },
+        book: async (parent, {_id}) => {
+            return await Book.find({_id})
+        },
+        bookRatings:async () => {
+            return await BookRating.find({});
+        },
+        bookRating: async (parent, {bookId}) => {
+            return await BookRating.find({bookId});
+        },
+        userBookRating:async (parent, {bookId, userId}) => {           
+          
+            const bookRating = await BookRating.findOne({
+              userId,
+              bookId,
+            });
+          
+            if (bookRating)
+              return {
+                value: bookRating.value,
+                isFound: true,
+              };
+            return { isFound: false };
+        },
+        averageBookRating:async (parent, {bookId}) => {           
+          
+            const bookRatings = await BookRating.find({bookId});
+            if (!bookRatings.length) return { value: 0 };
+          // Is this right way to calculate average rating?
+            const value = (
+              bookRatings.reduce((acc, { value }) => {
+                return acc + value;
+              }, 0) / bookRatings.length
+            ).toFixed(2);
+          
+            return { value, quantity: bookRatings.length };
+        },           
+        me: async (parent, args, context) => {
+            if (context.user) {
+              return User.findOne({ _id: context.user._id }).populate('Book');
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
+        
     },
     Mutation:{
-        addUser: async (parent, { username, email, password }) => {
-            const user = await User.create({ username, email, password });
+        addUser: async (parent, { firstName, lastName, email, password }) => {
+            const user = await User.create({ firstName, lastName, email, password });
             const token = signToken(user);
             return { token, user };
         },
@@ -37,6 +151,42 @@ const resolvers = {
             const token = signToken(user);
       
             return { token, user };
-          },
+        },
+        addBook:async (parent, {_book, userId})=> {
+            const user = await User.getById(userId);
+          
+            _book.addedBy = `${user.firstName} ${user.lastName}`;           
+          
+            const book = new Book(_book);
+          
+            return book.save();
+        },
+        deleteBook:async (parent, {bookId, userId}) => {
+            const book = await Book.find({bookId});
+          
+            if (!book) throw new Error("Book does not exist!");
+            // ToDo how do I get the addedByID?
+            if (userId !== book.addedById) 
+              throw new Error("Book was not created by you!");
+          
+            return await book.remove();
+        },
+        addBookRating:async (parent,{ bookId, value , userId})=> {
+                      
+            const ratingInDatabase = await BookRating.findOne({userId,bookId});
+          
+            if (ratingInDatabase) {
+              ratingInDatabase.value = value;
+              ratingInDatabase.save((err, obj) => {
+                if (err) throw new Error("err.message");
+                return;
+              });
+            } else {
+              const commentRating = new BookRating({ userId, bookId, value });
+              commentRating.save();
+            }
+        },
+
+        
     },
 }

@@ -39,13 +39,6 @@ type Comment {
     text: String 
 }
 
-type CommentRating {
-    _id:ID
-    userId: String
-    commentId : String
-    value: String
-}
-
 type Marker {
     _id:ID
     userId: String
@@ -63,17 +56,17 @@ type Auth {
 }
 
 type Query {
-    user : User
+    users : [User]
+    user(_id: ID!): User 
     books : [Books]
     book(_id: ID!): Book
     bookRatings: [BookRating]
     bookRating(_id: ID!): BookRating
     category: [Category]
     comments: [Comments]
-    commentRatings: [CommentRating]
-    commentRating(_id: ID!): CommentRating
+    comment(bookId: ID!): Book   
     markers: [Marker]
-    marker(_id: ID!): marker
+    marker(_id: ID!): Marker
 }
 
 type Mutation {
@@ -106,21 +99,19 @@ type Mutation {
         userId: String!,
         bookId: String!,
         text: String!
-    ): Comment 
-
-    addCommentRating (
-        userId: String!,
-        commentId : String!,
-        value: String!
-    ): CommentRating
+    ): Comment   
 
     addMaker(
         userId: String!,
         bookId: String!
     ): Marker
 
+    addCategory(
+        name: String!
+    ): Category
+
     deleteBook(
-        bookID: ID!
+        bookId: ID!
     ): Book
 
     removeMarker(
