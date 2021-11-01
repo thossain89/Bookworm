@@ -58,15 +58,19 @@ type Auth {
 type Query {
     users : [User]
     user(_id: ID!): User 
-    books : [Books]
+    books : [Book]
     book(_id: ID!): Book
     bookRatings: [BookRating]
     bookRating(_id: ID!): BookRating
     category: [Category]
-    comments: [Comments]
+    comments: [Comment]
     comment(bookId: ID!): Book   
     markers: [Marker]
     marker(_id: ID!): Marker
+    isBookMarked:[Marker]
+    userBookRating: [BookRating]
+    averageBookRating:[BookRating]
+    me: User
 }
 
 type Mutation {
@@ -101,7 +105,7 @@ type Mutation {
         text: String!
     ): Comment   
 
-    addMaker(
+    addMarker(
         userId: String!,
         bookId: String!
     ): Marker

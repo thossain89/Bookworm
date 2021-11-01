@@ -1,0 +1,101 @@
+[{
+  "name": "Falco peregrinus",
+  "author": "Trace Costelloe",
+  "category": "Horror",
+  "description": "well-modulated",
+  "pages": 2089,
+  "year": 1964,
+  "image": "https://robohash.org/etsimiliqueplaceat.png?size=50x50&set=set1",
+  "rating": 2,
+  "isAvailable": true
+}, {
+  "name": "Odocoilenaus virginianus",
+  "author": "Raimondo Draco",
+  "category": "Thriller",
+  "description": "Compatible",
+  "pages": 1047,
+  "year": 2008,
+  "image": "https://robohash.org/voluptasrecusandaeperspiciatis.png?size=50x50&set=set1",
+  "rating": 3,
+  "isAvailable": true
+}, {
+  "name": "Carphophis sp.",
+  "author": "Stearne Goodwyn",
+  "category": "Action",
+  "description": "Synergistic",
+  "pages": 646,
+  "year": 1994,
+  "image": "https://robohash.org/ametdoloresconsectetur.png?size=50x50&set=set1",
+  "rating": 5,
+  "isAvailable": true
+}, {
+  "name": "Myiarchus tuberculifer",
+  "author": "Cynthie Erickson",
+  "category": "Adventure",
+  "description": "methodical",
+  "pages": 675,
+  "year": 2003,
+  "image": "https://robohash.org/etrationeeveniet.png?size=50x50&set=set1",
+  "rating": 1,
+  "isAvailable": false
+}, {
+  "name": "Merops nubicus",
+  "author": "Belva MacGeffen",
+  "category": "Comedy",
+  "description": "24/7",
+  "pages": 807,
+  "year": 2006,
+  "image": "https://robohash.org/nonquibusdamconsequatur.png?size=50x50&set=set1",
+  "rating": 4,
+  "isAvailable": true
+}, {
+  "name": "Megaderma spasma",
+  "author": "Kimberly MacColm",
+  "category": "Drama",
+  "description": "Synergistic",
+  "pages": 1349,
+  "year": 1994,
+  "image": "https://robohash.org/nonnamrecusandae.png?size=50x50&set=set1",
+  "rating": 3,
+  "isAvailable": true
+}, {
+  "name": "Lamprotornis chalybaeus",
+  "author": "Lorena Doog",
+  "category": "Western",
+  "description": "product",
+  "pages": 1541,
+  "year": 1997,
+  "image": "https://robohash.org/ineiusamet.png?size=50x50&set=set1",
+  "rating": 0,
+  "isAvailable": false
+}, {
+  "name": "Philetairus socius",
+  "author": "Tomlin Rzehor",
+  "category": "Western",
+  "description": "real-time",
+  "pages": 1801,
+  "year": 2010,
+  "image": "https://robohash.org/quidemvoluptasnecessitatibus.png?size=50x50&set=set1",
+  "rating": 4,
+  "isAvailable": false
+}, {
+  "name": "Lorythaixoides concolor",
+  "author": "Natasha Press",
+  "category": "Drama",
+  "description": "secured line",
+  "pages": 1423,
+  "year": 1985,
+  "image": "https://robohash.org/quamametat.png?size=50x50&set=set1",
+  "rating": 2,
+  "isAvailable": true
+}, {
+  "name": "Macropus robustus",
+  "author": "Tonia Pride",
+  "category": "Drama",
+  "description": "hardware",
+  "pages": 1292,
+  "year": 1994,
+  "image": "https://robohash.org/quieumaut.png?size=50x50&set=set1",
+  "rating": 4,
+  "isAvailable": false
+}]
