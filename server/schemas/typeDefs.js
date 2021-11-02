@@ -13,7 +13,7 @@ type Book {
     image: String    
     isAvailable : Boolean!
     addedBy: User
-    review: [Review]
+    reviews: [Review]
 }
 
 type User {
@@ -27,8 +27,9 @@ type User {
 
 type Review {
     _id: ID
-    reviewText: String
-    reviewAuthor: String    
+    review: String
+    author: User
+    rating: Int    
     createdAt: String
 }
 
@@ -72,7 +73,8 @@ type Mutation {
 
     addReview(
         bookId: ID!,
-        reviewText: String!
+        review: String!,
+        rating: Int!
     ): Book
 
     deleteBook(

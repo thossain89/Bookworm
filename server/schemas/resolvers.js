@@ -52,9 +52,7 @@ const resolvers = {
   },
   Book:{
     addedBy: async ({addedBy}, args,context)=>{ 
-       console.log(addedBy._id); 
-       console.log(addedBy.email);  
-       return !addedBy.email? await User.findOne({_id:addedBy._id}) : addedBy;
+      return !addedBy.email? await User.findOne({_id:addedBy._id}) : addedBy;
     } 
   },
   User:{
@@ -62,6 +60,11 @@ const resolvers = {
     {
       return await Book.find({addedBy:_id});
     }
+  },
+  Review:{
+    author: async ({author}, args,context)=>{
+      return !author.email? await User.findOne({_id:author._id}) : author;
+   } 
   },
 
   Mutation: {
@@ -89,7 +92,8 @@ const resolvers = {
     },
     // Need Clarification
     addBook: async (parent, {name,author,category,description,pages,year,image}, context) => {
-      if (context.user) {
+      if (!context.user) throw new AuthenticationError('You need to be logged in!');
+        const user = await User.findOne({email:context.user.email});
         const book = await Book.create({
           name,
           author,
@@ -98,17 +102,11 @@ const resolvers = {
           pages,
           year,
           image,
-          addedBy:context.user,
-        });
-
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { books: book._id } }
-        );
-
+          addedBy:user,
+        });        
         return book;
-      }
-      throw new AuthenticationError('You need to be logged in!');
+      
+      
     },
     deleteBook: async (parent, { bookId }, context) => {
       if (context.user) {
