@@ -5,45 +5,25 @@ const typeDefs = gql`
 type Book {
     _id:ID
     name: String
+    author: String
     category: String
     description: String
     pages: Int
     year: Int
-    image: String
-    rating: Int
+    image: String    
     isAvailable : Boolean!
     addedBy: User
+    review: [Review]
 }
 
 type User {
     _id: ID
-    firstName: String
-    lastName: String
+    username: String    
     email: String 
     password: String
     books : [Book]   
 }
 
-type BookRating {
-    _id:ID
-    userId: String
-    bookId: String
-    value: Float
-}
-
-type Comment {
-    _id:ID
-    userId: String
-    bookId: String
-    text: String 
-}
-
-type CommentRating {
-    _id:ID
-    userId: String
-    commentId : String
-    value: String
-}
 
 type Marker {
     _id:ID
@@ -51,9 +31,11 @@ type Marker {
     bookId: String
 }
 
-type Category {
+type Review {
     _id: ID
-    name: String
+    reviewText: String
+    reviewAuthor: String    
+    createdAt: String
 }
 
 type Auth {
@@ -61,23 +43,59 @@ type Auth {
     user: User
 }
 
+input SearchOption {
+    category: String
+    searchPhrase: String
+    start: Int
+    limit: Int
+}
+
 type Query {
-    user : User
-    books : [Books]
-    book(_id: ID!): Book
-    bookRatings: [BookRating]
-    bookRating(_id: ID!): BookRating
-    category: [Category]
-    comments: [Comments]
-    commentRatings: [CommentRating]
-    commentRating(_id: ID!): CommentRating
-    markers: [Marker]
-    marker(_id: ID!): marker
+    users : [User]
+    user(_id: ID!): User 
+    books(options:SearchOption) : [Book]
+    book(_id: ID!): Book     
+    me: User
 }
 
 type Mutation {
-    addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-    addBook()  
+    addUser(
+        username: String!,         
+        email: String!, 
+        password: String!
+    ): Auth
+
+    addBook(
+        name: String!, 
+        author: String!, 
+        category: String!, 
+        description: String!, 
+        pages: Int!,
+        year: Int!,
+        image: String!     
+        
+    ): Book  
+
+    addReview(
+        bookId: ID!,
+        reviewText: String!
+    ): Book
+
+    deleteBook(
+        bookId: ID!
+    ): Book
+
+    removeReview(
+        bookId: ID!, 
+        reviewId: ID!
+    ): Book
+
+    login(
+        email: String!, 
+        password: String!
+    ): Auth
+
+
 }
 
 

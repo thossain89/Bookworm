@@ -1,0 +1,28 @@
+[
+  {
+    "username": "Brian",    
+    "email": "bkernighan@techfriends.dev",
+    "password": "password01"
+  },
+  {    
+    "username": "Max",    
+    "email": "mkanatalexander@techfriends.dev",
+    "password": "password02"
+  },
+  {    
+    "username": "Lucky",    
+    "email": "wtls@techfriends.dev",
+    "password": "password03"
+  },
+  {
+    "username": "Kent",    
+    "email": "kbeck@techfriends.dev",
+    "password": "password04"
+  },
+  {    
+    "username": "Edward V.",    
+    "email": "evberard@techfriends.dev",
+    "password": "password05"
+  }
+ 
+]

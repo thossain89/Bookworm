@@ -1,9 +1,5 @@
 const User = require('./User');
 const Book = require('./Book');
-const Marker = require('./Marker');
-const BooksRating = require('./BookRating');
-const Category = require('./Category');
-const Comment = require('./Comment');
-const CommentRating = require('./CommentRating');
 
-module.exports = {User, Book, Marker, BooksRating, Category, Comment, CommentRating};
+
+module.exports = {User, Book};

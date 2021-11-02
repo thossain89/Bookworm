@@ -4,12 +4,8 @@ const Book = require('./Book');
 
 
 const userSchema = new Schema({
-  firstName: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  lastName: {
+ 
+  username: {
     type: String,
     required: true,
     trim: true
@@ -24,7 +20,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 5
   },
-  books: [Book.schema]
+  
 });
 
 // set up pre-save middleware to create password

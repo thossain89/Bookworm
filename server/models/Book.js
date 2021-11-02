@@ -11,10 +11,9 @@ const BookSchema = new Schema(
         type: String, 
         required: true 
     },
-    category: { 
-      type: Schema.Types.ObjectId,
-      ref: 'Category',
-      required: true
+    category: {      
+      type: String,
+      required: false
     },
     description: {   
         type: String,
@@ -28,20 +27,33 @@ const BookSchema = new Schema(
       type: Number,
       required: true,
     },
-    addedBy: { 
-      
+    addedBy: {       
       type: Schema.Types.ObjectId,
       ref: 'User',
-      required: true
-      
+      required: false      
     },    
     image: {
         type:String 
     },
-    rating: {
-      type: Number,
-      required: true,
-    },
+    review:[
+      {
+        reviewText:{
+          type:String,
+          required:false,
+          minlength:5,
+          maxlength:280,
+        },
+        reviewAuthor:{
+          type:String,
+          required: false,
+        },        
+        createdAt: {
+          type: Date,
+          default: Date.now,
+          get: (timestamp) => dateFormat(timestamp),
+        },
+      }
+    ], 
     isAvailable: {
       type: Boolean,
       default: true,
