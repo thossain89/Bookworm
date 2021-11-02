@@ -1,31 +1,26 @@
 [
   {
-    "firstName": "Brian",
-    "lastName": "Kernighan",
+    "username": "Brian",    
     "email": "bkernighan@techfriends.dev",
     "password": "password01"
   },
   {    
-    "firstName": "Max",
-    "lastName": "Kanat-Alexander",
+    "username": "Max",    
     "email": "mkanatalexander@techfriends.dev",
     "password": "password02"
   },
   {    
-    "firstName": "Lucky",
-    "lastName": "Stiff",
+    "username": "Lucky",    
     "email": "wtls@techfriends.dev",
     "password": "password03"
   },
   {
-    "firstName": "Kent",
-    "lastName": "Beck",
+    "username": "Kent",    
     "email": "kbeck@techfriends.dev",
     "password": "password04"
   },
   {    
-    "firstName": "Edward V.",
-    "lastName": "Berard",
+    "username": "Edward V.",    
     "email": "evberard@techfriends.dev",
     "password": "password05"
   }
