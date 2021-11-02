@@ -25,12 +25,6 @@ type User {
 }
 
 
-type Marker {
-    _id:ID
-    userId: String
-    bookId: String
-}
-
 type Review {
     _id: ID
     reviewText: String
