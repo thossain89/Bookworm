@@ -74,7 +74,7 @@ type Mutation {
     addReview(
         bookId: ID!,
         review: String!,
-        rating: Int!
+        rating: Int!        
     ): Book
 
     deleteBook(
