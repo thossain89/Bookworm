@@ -35,18 +35,24 @@ const BookSchema = new Schema(
     image: {
         type:String 
     },
-    review:[
+    reviews:[
       {
-        reviewText:{
+        review:{
           type:String,
           required:false,
           minlength:5,
           maxlength:280,
-        },
-        reviewAuthor:{
-          type:String,
-          required: false,
         },        
+        author:{
+          type: Schema.Types.ObjectId,
+          ref: 'User',
+          required: true 
+        }, 
+        rating: {
+            type: Number,
+            min: 0,
+            max: 5,
+        } ,      
         createdAt: {
           type: Date,
           default: Date.now,
