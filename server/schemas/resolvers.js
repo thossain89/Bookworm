@@ -108,7 +108,8 @@ const resolvers = {
         return book;
     },
     deleteBook: async (parent, { bookId }, context) => {
-      if (context.user) {
+      if (!context.user) throw new AuthenticationError('You need to be logged in!'); 
+        
         const book = await Book.findOneAndDelete({_id: bookId});
 
         await User.findOneAndUpdate(
@@ -117,8 +118,8 @@ const resolvers = {
         );
 
         return book;
-      }
-      throw new AuthenticationError('You need to be logged in!');
+      
+      
     },
     addReview: async (parent, { bookId, review, rating}, context) => {
       if (!context.user) throw new AuthenticationError('You need to be logged in!');

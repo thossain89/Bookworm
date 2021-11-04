@@ -11,9 +11,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Import Components
 
-import NotFound from './components/notFound';
+// import NotFound from './components/notFound';
 import Header from './components/header';
-import BooksHome from './components/booksHome'
+import Footer from './components/footer';
+import Login from './components/login';
+import Signup from './components/signup';
+// import BooksHome from './components/booksHome'
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -50,7 +53,7 @@ function App() {
           <Switch>
           <div className="container">
             <Route exact path="/">
-              <BooksHome />
+              {/* <BooksHome /> */}
               {/* user not loggedIn show a message, otherwise query to get all books */}
             </Route>
             <Route exact path="/login">
@@ -60,24 +63,25 @@ function App() {
               <Signup />
             </Route>
             <Route exact path="/book/:id">
-              <BookSingle />
+              {/* <BookSingle /> */}
               {/* user not loggedIn show a message, query to get book by id */}
             </Route>
             <Route exact path="/mybooks">
-              <MyBooks />
+              {/* <MyBooks /> */}
               {/* query to get books by user Id, mutation to delete a book */}
             </Route>
             <Route exact path="/add">
-              <AddBook />
+              {/* <AddBook /> */}
               {/* user not loggedIn show a message, mutation to add book */}
             </Route>
             <Route>
-              <NotFound />
+              {/* <NotFound /> */}
             </Route>
             </div>
           </Switch>
-          <LeftMenu />
+          {/* <LeftMenu /> */}
           </div>
+          <Footer/>
         </Router>
       </ApolloProvider>
     </div>
