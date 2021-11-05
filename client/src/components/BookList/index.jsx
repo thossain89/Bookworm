@@ -8,8 +8,7 @@ const BookList = ({
     showTitle = true,    
        
 }) => {   
-console.log(Auth.loggedIn());
-console.log(books);
+
     return (
 
         <div>    

@@ -1,36 +1,28 @@
 import React from 'react'
 import {useQuery} from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
+import BookList from '../components/BookList';
+
 export default function MyBooks() {
-
-    // get the 'me' query
-    const {data, loading} = useQuery(QUERY_ME);
-
-
-
-    // get all the books from me
-
-
-
-    // show the books
-    function renderBooks(books){
-        return (
-            <ul>
-                {books.map((book) => {
-
-                    return (<li key={book._id} >{book.name}</li>)
-
-                })}
-            </ul>
-        )
-    }
-
-
-
+    const { loading, data } = useQuery(QUERY_ME);
+    const me = data?.me || [];
     return (
-        <div>
-            {loading && (<p>Loading...</p>)}
-            {!loading && renderBooks(data.me.books)}
-        </div>
-    )
-}
+         
+            <div className="flex-row justify-center">                
+                <div className="col-12 col-md-8 mb-3">
+                {loading ? (
+                    <div>Loading...</div>
+                ) : (
+                    <BookList
+                    books={me.books}
+                    title="My Books"
+                    />
+                )}
+                </div>
+            </div>            
+    )       
+};
+
+
+
+

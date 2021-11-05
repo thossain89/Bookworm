@@ -52,38 +52,22 @@ function App() {
     <div>
       <ApolloProvider client={client}>
         <Router>       
-        <div className="flex-column justify-flex-start min-100-vh">        
-        <Header />          
-          <Navbar />
-          <Switch>
-          <div className="container">
-            <Route exact path="/">
-              <AllBooksHome/>
-              {/* user not loggedIn show a message, otherwise query to get all books */}
-            </Route>
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup">
-              <Signup />
-            </Route>
-            <Route exact path="/book/:id">
-              {/* <BookSingle /> */}
-              {/* user not loggedIn show a message, query to get book by id */}
-            </Route>
-            <Route exact path="/mybooks">
-              <MyBooks />
-              {/* query to get books by user Id, mutation to delete a book */}
-            </Route>
-            <Route exact path="/add">
-              <AddBook />
-              {/* user not loggedIn show a message, mutation to add book */}
-            </Route>
-            <Route>
-              {/* <NotFound /> */}
-            </Route>
+          <div className="flex-column justify-flex-start min-100-vh">        
+          <Header />          
+            <Navbar />
+              <Switch>
+                <div className="container">
+                  <Route exact path="/" component={AllBooksHome}/>              
+                  <Route exact path="/login" component={Login} />
+                  <Route exact path="/signup"component={Signup}/>
+                  <Route exact path="/mybooks"component={MyBooks}/>
+                  <Route exact path="/add"component={AddBook}/>
+                  {/* <Route exact path="/book/:id" component={BookSingle}>             */}
+                  {/* user not loggedIn show a message, query to get book by id */}          
+                  {/* <Route component ={NotFound}/> */}    
+                </div>
+              </Switch>          
             </div>
-          </Switch>
-          
-          </div>
           <Footer/>
         </Router>
       </ApolloProvider>
