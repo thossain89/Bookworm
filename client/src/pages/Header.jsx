@@ -14,9 +14,9 @@ const Header = () => {
         <img src={logo} alt="Logo" />
           <div>
             <Link className="text-light" to="/">
-              <h1 className="m-0">Bookworm</h1>
+              <h1 className="m-0">BOOKWORM</h1>
             </Link>
-            <p className="m-0">Share your thoughts about your favorite book </p>
+            <p className="m-0">LET'S DISCUSS BOOKS WE LOVE!</p>
           </div>
           <div>
             {Auth.loggedIn() ? (

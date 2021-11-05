@@ -5,10 +5,11 @@ import Auth from '../../utils/auth';
 const BookList = ({
     books,
     title,
-    showTitle,    
+    showTitle = true,    
        
 }) => {   
-
+console.log(Auth.loggedIn());
+console.log(books);
     return (
 
         <div>    
@@ -19,12 +20,14 @@ const BookList = ({
                 <div key={book._id} className="card mb-3">
                     <h4 className="card-header bg-primary text-light p-2 m-0">
                     <p> {book.name} </p>
-                    <p> {book.author} </p>
-                    <p> {book.year} </p>
+                    <p>Author:{book.author} </p>
+                    <p>{book.category},{book.pages}pages</p>
+                    <p>Year:{book.year}</p>
+                    <img src ={book.image} alt="book cover"/>
+                    
                     </h4>
-                    <div className="card-body bg-light p-2">
-                    <p>{book.category}</p>
-                    <p>{book.pages}</p>
+                    <div className="card-body bg-light p-2"> 
+                    <strong>Description:</strong>                  
                     <p>{book.description}</p>
                     </div>
                     <Link

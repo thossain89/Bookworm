@@ -19,6 +19,7 @@ import Signup from './pages/Signup';
 import Navbar from './components/Navbar/Navbar';
 import AddBook from './pages/AddBook';
 import AllBooksHome from './pages/AllBooksHome';
+import MyBooks from './pages/MyBooks';
 // import NotFound from './components/notFound';
 
 
@@ -60,9 +61,7 @@ function App() {
               <AllBooksHome/>
               {/* user not loggedIn show a message, otherwise query to get all books */}
             </Route>
-            <Route exact path="/login">
-              <Login />
-            </Route>
+            <Route exact path="/login" component={Login} />
             <Route exact path="/signup">
               <Signup />
             </Route>
@@ -71,7 +70,7 @@ function App() {
               {/* user not loggedIn show a message, query to get book by id */}
             </Route>
             <Route exact path="/mybooks">
-              {/* <MyBooks /> */}
+              <MyBooks />
               {/* query to get books by user Id, mutation to delete a book */}
             </Route>
             <Route exact path="/add">
