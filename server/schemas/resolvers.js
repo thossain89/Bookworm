@@ -11,7 +11,7 @@ const resolvers = {
         
       return await User.findOne({_id: _id});
     },    
-    books: async (parent,{options},context) => {
+    books: async (parent,options,context) => {
      
       const { category, searchPhrase, start, limit } = options;
      

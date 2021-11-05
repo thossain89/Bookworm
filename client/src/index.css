@@ -1261,7 +1261,7 @@ label form [type='radio'] {
 
 [class*='col-'] {
   position: relative;
-  width: 100%;
+  width: 50%;
   padding-right: 15px;
   padding-left: 15px;
 }
