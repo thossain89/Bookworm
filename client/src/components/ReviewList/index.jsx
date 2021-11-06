@@ -14,17 +14,13 @@ const ReviewList = ({ reviews = [] }) => {
         Reviews
       </h3>
       <div className="flex-row my-4">
-        {reviews &&
-         reviews.map((review) => (
+      {reviews.map((review) => (
             <div key={review._id} className="col-12 mb-3 pb-3">
               <div className="p-3 bg-dark text-light">
                 <h5 className="card-header">
-                  {review.author} commented{' '}
-                  <span style={{ fontSize: '0.825rem' }}>
-                    on {review.createdAt}
-                  </span>
+                  {review.author.username} commented{' '}
                 </h5>
-                <p className="card-body">{review.review}</p>
+                <p className="card-body">Rating: {review.rating}<br/>{review.review}</p>
               </div>
             </div>
           ))}

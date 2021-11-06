@@ -21,8 +21,7 @@ const ReviewForm = ({ bookId }) => {
         variables: {
           bookId,
           review,
-          rating,
-          author: Auth.getProfile().data.username,
+          rating
         },
       });
 
@@ -42,7 +41,7 @@ const ReviewForm = ({ bookId }) => {
     }
 
     if (name === 'rating'){
-        setRating(value);
+        setRating(parseInt(value));
     }
   };
 
@@ -73,14 +72,15 @@ const ReviewForm = ({ bookId }) => {
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
               ></textarea>
-              <textarea
+              <input
                 name="rating"
                 placeholder="Please add rating between 1 to 5"
                 value={rating}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
-              ></textarea>
+                type="number"
+              ></input>
             </div>
 
             <div className="col-12 col-lg-3">
