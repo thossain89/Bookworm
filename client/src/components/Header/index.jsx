@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../img/bookwormLogo.png';
-import Auth from '../utils/auth';
+import logo from '../../img/bookwormLogo.png';
+import Auth from '../../utils/auth';
 
 const Header = () => {
     const logout = (event) => {

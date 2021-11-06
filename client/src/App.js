@@ -12,14 +12,15 @@ import './App.scss';
 // Import Components
 
 
-import Header from './pages/Header';
-import Footer from './pages/Footer';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Login from './components/Login';
+import Signup from './components/Signup';
 import Navbar from './components/Navbar/Navbar';
 import AddBook from './pages/AddBook';
 import AllBooksHome from './pages/AllBooksHome';
 import MyBooks from './pages/MyBooks';
+import SingleBook from './pages/SingleBook';
 // import NotFound from './components/notFound';
 
 
@@ -62,9 +63,8 @@ function App() {
                   <Route exact path="/signup"component={Signup}/>
                   <Route exact path="/mybooks"component={MyBooks}/>
                   <Route exact path="/add"component={AddBook}/>
-                  {/* <Route exact path="/book/:id" component={BookSingle}>             */}
-                  {/* user not loggedIn show a message, query to get book by id */}          
-                  {/* <Route component ={NotFound}/> */}    
+                  <Route exact path="/book/:id" component={SingleBook}/>         
+                   {/* <Route component ={NotFound}/> */}                                        
                 </div>
               </Switch>          
             </div>
