@@ -19,12 +19,12 @@ const BookSchema = new Schema(
         type: String,
     },
     pages: {
-      type: Number,
+      type: String,
       required: true,
-      min: 10,
+      
     },
     year: {
-      type: Number,
+      type: String,
       required: true,
     },
     addedBy: {       

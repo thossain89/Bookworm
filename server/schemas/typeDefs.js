@@ -8,8 +8,8 @@ type Book {
     author: String
     category: String
     description: String
-    pages: Int
-    year: Int
+    pages: String
+    year: String
     image: String    
     isAvailable : Boolean!
     addedBy: User
@@ -65,8 +65,8 @@ type Mutation {
         author: String!, 
         category: String!, 
         description: String!, 
-        pages: Int!,
-        year: Int!,
+        pages: String!,
+        year: String!,
         image: String!     
         
     ): Book  

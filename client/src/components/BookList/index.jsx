@@ -22,7 +22,7 @@ const BookList = ({
                     <p>Author:{book.author} </p>
                     <p>{book.category},{book.pages}pages</p>
                     <p>Year:{book.year}</p>
-                    <img src ={book.image} alt="book cover"/>
+                    <img src ={book.image} alt="book cover" />
                     
                     </h4>
                     <div className="card-body bg-light p-2"> 

@@ -62,7 +62,7 @@ mutation removeReview($bookId:ID!, $reviewId:ID!) {
 `;
 
 export const ADD_BOOK = gql`
-mutation addBook($name:String!,$author:String!,$category:String!,$description:String!,$pages: Int!,$year: Int!,$image: String!)
+mutation addBook($name:String!,$author:String!,$category:String!,$description:String!,$pages: String!,$year: String!,$image: String!)
 {
  addBook(name:$name, author:$author, category:$category, description:$description,pages:$pages,year:$year,image:$image){
   _id
