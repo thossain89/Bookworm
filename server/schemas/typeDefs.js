@@ -82,7 +82,7 @@ type Mutation {
     ): Book
 
     removeReview(
-        bookId: ID!, 
+        bookId: ID!,         
         reviewId: ID!
     ): Book
 

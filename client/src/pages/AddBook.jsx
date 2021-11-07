@@ -65,7 +65,7 @@ const AddBook = (props) => {
                   {data ? (
                     <p>
                       Success!
-                      <Link to="/mybooks">back to the My Books</Link>
+                      <Link to="/mybooks">Back to the My Books</Link>
                     </p>
                   ) : (
                     <form onSubmit={handleFormSubmit}>
@@ -147,7 +147,7 @@ const AddBook = (props) => {
         </>
       ) : (
         <p>
-          You need to be logged to add books. Please{' '}
+          You need to be logged in to add books. Please{' '}
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}

@@ -27,6 +27,7 @@ query book($_id: ID!) {
       category
       image
       reviews{
+        _id
         review
         author{
           username

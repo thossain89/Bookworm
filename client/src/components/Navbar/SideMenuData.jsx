@@ -2,6 +2,8 @@ import React from 'react';
 import { FaBookMedical } from "react-icons/fa";
 import { ImStack} from "react-icons/im";
 import { ImBook} from "react-icons/im";
+import {GiReceiveMoney} from "react-icons/gi";
+
 
 export const SidebarData = [
   {
@@ -20,6 +22,12 @@ export const SidebarData = [
     title: 'Add Books',
     path: '/add',
     icon: <FaBookMedical />,
+    cName: 'nav-text'
+  },
+  {
+    title: 'Donate',
+    path: '/donate',
+    icon: <GiReceiveMoney/>,
     cName: 'nav-text'
   },
 ];
