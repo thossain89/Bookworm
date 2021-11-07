@@ -56,7 +56,7 @@ function App() {
           <div className="flex-column justify-flex-start min-100-vh">        
           <Header />          
             <Navbar />
-              <Switch>
+              
                 <div className="container">
 
                   <Route exact path="/" component={AllBooksHome}/>              
@@ -67,7 +67,7 @@ function App() {
                   <Route exact path="/book/:id" component={SingleBook}/>
                                                      
                 </div>
-              </Switch>          
+                       
             </div>
           <Footer/>
         </Router>

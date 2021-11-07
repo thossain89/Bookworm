@@ -30,7 +30,7 @@ const SingleBook = () => {
       <h3>by {book.author}</h3>
 
       <div className="my-5">
-        <ReviewList reviews={book.reviews} />
+        <ReviewList book={book} />
       </div>
       <div className="m-3 p-4" style={{ border: '1px dotted #1a1a1a' }}>
         <ReviewForm bookId={book._id} />

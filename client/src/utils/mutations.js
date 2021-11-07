@@ -43,22 +43,22 @@ mutation addReview($bookId:ID!, $review:String!, $rating:Int!) {
 `;
 
 export const REMOVE_REVIEW = gql`
-mutation removeReview($bookId:ID!, $reviewId:ID!) {
-    removeReview(bookId:$bookId, reviewId:$reviewId) {
+mutation RemoveReview($bookId:ID!, $reviewId:ID!) {
+  removeReview(bookId:$bookId, reviewId:$reviewId) {
+    _id
+    name
+    reviews {
       _id
-      name
-      reviews {
+      review
+      rating
+      author {
         _id
-        review
-        rating
-        author {
-          _id
-          username
-          
-        }
+        username
+        
       }
     }
   }
+}
 `;
 
 export const ADD_BOOK = gql`
