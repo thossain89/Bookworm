@@ -21,6 +21,7 @@ import AddBook from './pages/AddBook';
 import AllBooksHome from './pages/AllBooksHome';
 import MyBooks from './pages/MyBooks';
 import SingleBook from './pages/SingleBook';
+import Donate from './components/Donate/Donate';
 
 
 
@@ -65,6 +66,9 @@ function App() {
                   <Route exact path="/mybooks"component={MyBooks}/>
                   <Route exact path="/add"component={AddBook}/>
                   <Route exact path="/book/:id" component={SingleBook}/>
+                  <Switch>
+                    <Route exact path ="/donate" component={Donate}/>
+                  </Switch>
                                                      
                 </div>
                        

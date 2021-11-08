@@ -38,6 +38,10 @@ type Auth {
     user: User
 }
 
+type StripeSession {
+    url: String!
+}
+
 input SearchOption {
     category: String
     searchPhrase: String
@@ -51,6 +55,7 @@ type Query {
     books(options:SearchOption) : [Book]
     book(_id: ID!): Book     
     me: User
+    
 }
 
 type Mutation {
@@ -91,6 +96,7 @@ type Mutation {
         password: String!
     ): Auth
 
+    createDonation: StripeSession
 
 }
 
