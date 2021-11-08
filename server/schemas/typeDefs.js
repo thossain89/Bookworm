@@ -55,6 +55,7 @@ type Query {
     books(options:SearchOption) : [Book]
     book(_id: ID!): Book     
     me: User
+    createDonation: StripeSession
     
 }
 
@@ -96,7 +97,7 @@ type Mutation {
         password: String!
     ): Auth
 
-    createDonation: StripeSession
+    
 
 }
 

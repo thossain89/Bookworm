@@ -51,6 +51,24 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    createDonation: async (parent, args, context) => {
+      const session = await stripe.checkout.sessions.create({
+        line_items: [
+          {
+            price: process.env.PRICE_ID,
+            quantity: 1,
+          },
+        ],
+        payment_method_types: [
+          'card',
+        ],
+        mode: 'payment',
+        success_url: `${process.env.APP_DOMAIN}/success`,
+        cancel_url: `${process.env.APP_DOMAIN}/cancel`,
+      });
+    
+      return { url: session.url };
+    },
   },
   Book:{
     addedBy: async ({addedBy}, args,context)=>{ 
@@ -159,24 +177,7 @@ const resolvers = {
       
     },
 
-    createDonation: async (parent, args, context) => {
-      const session = await stripe.checkout.sessions.create({
-        line_items: [
-          {
-            price: process.env.PRICE_ID,
-            quantity: 1,
-          },
-        ],
-        payment_method_types: [
-          'card',
-        ],
-        mode: 'payment',
-        success_url: `${process.env.APP_DOMAIN}/success`,
-        cancel_url: `${process.env.APP_DOMAIN}/cancel`,
-      });
     
-      return { url: session.url };
-    }
    
 },
 };
