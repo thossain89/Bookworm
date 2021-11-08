@@ -148,7 +148,7 @@ const AddBook = (props) => {
       ) : (
         <p>
           You need to be logged in to add books. Please{' '}
-          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
+          <Link to="/login"> login </Link> or <Link to="/signup"> signup. </Link>
         </p>
       )}
     </div>

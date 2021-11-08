@@ -62,3 +62,10 @@ query me {
     }
   }
 `;
+
+export const STRIPE_SESSION = gql`
+query stripe{
+  createDonation{
+    url
+  }
+}`;

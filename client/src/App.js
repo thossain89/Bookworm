@@ -21,6 +21,9 @@ import AddBook from './pages/AddBook';
 import AllBooksHome from './pages/AllBooksHome';
 import MyBooks from './pages/MyBooks';
 import SingleBook from './pages/SingleBook';
+import Donate from './components/Donate/Donate';
+import Success from './components/Donate/Success';
+import Cancel from './components/Donate/Cancel';
 
 
 
@@ -65,6 +68,11 @@ function App() {
                   <Route exact path="/mybooks"component={MyBooks}/>
                   <Route exact path="/add"component={AddBook}/>
                   <Route exact path="/book/:id" component={SingleBook}/>
+                  <Switch>
+                    <Route exact path ="/donate" component={Donate}/>
+                    <Route exact path ="/success" component={Success}/>
+                    <Route exact path ="/cancel" component={Cancel}/>
+                  </Switch>
                                                      
                 </div>
                        

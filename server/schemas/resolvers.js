@@ -1,6 +1,8 @@
 const { AuthenticationError } = require('apollo-server-express');
 const {User,Book} = require('../models');
 const { signToken } = require('../utils/auth');
+const stripe = require('stripe')(process.env.STRIPE_SECRET);
+
 
 const resolvers = {
   Query: {
@@ -48,6 +50,24 @@ const resolvers = {
         return User.findOne({ _id: context.user._id }).populate('Book');
       }
       throw new AuthenticationError('You need to be logged in!');
+    },
+    createDonation: async (parent, args, context) => {
+      const session = await stripe.checkout.sessions.create({
+        line_items: [
+          {
+            price: process.env.PRICE_ID,
+            quantity: 1,
+          },
+        ],
+        payment_method_types: [
+          'card',
+        ],
+        mode: 'payment',
+        success_url: `${process.env.APP_DOMAIN}/success`,
+        cancel_url: `${process.env.APP_DOMAIN}/cancel`,
+      });
+    
+      return { url: session.url };
     },
   },
   Book:{
@@ -155,7 +175,9 @@ const resolvers = {
           { new: true }
         );
       
-    },  
+    },
+
+    
    
 },
 };
