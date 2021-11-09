@@ -65,7 +65,7 @@ const AddBook = (props) => {
                   {data ? (
                     <p>
                       Success!
-                      <Link to="/mybooks">Back to the My Books</Link>
+                      <Link to="/mybooks">Back to My Books</Link>
                     </p>
                   ) : (
                     <form onSubmit={handleFormSubmit}>
