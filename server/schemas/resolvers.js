@@ -100,8 +100,8 @@ const resolvers = {
         throw new AuthenticationError('No user found with this email address');
       }
 
-      const correctPw = user.password === password;
-      // const correctPw = await user.isCorrectPassword(password);
+      // const correctPw = user.password === password; (For TEST ONLY)
+      const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
         throw new AuthenticationError('Incorrect credentials');
